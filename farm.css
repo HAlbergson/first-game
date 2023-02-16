@@ -1,0 +1,58 @@
+body {
+  margin: 0;
+}
+img {
+  width: 100%;
+}
+#screen {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16/9;
+}
+#game {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0%;
+  left: 0%;
+}
+
+#start {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0%;
+  left: 0%;
+}
+#game_over {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0%;
+  left: 0%;
+}
+#level_complete {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0%;
+  left: 0%;
+}
+#game_backgroud {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0%;
+  left: 0%;
+  background-image: url(jpg/farm.jpg);
+  background-size: cover;
+}
+#game_foregroud {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0%;
+  left: 0%;
+  background-image: ;
+  background-size: cover;
+}
