@@ -49,21 +49,21 @@ img {
 }
 
 #mouse1 {
-  width: 13%;
+  width: 22%;
   position: absolute;
   top: 18%;
   left: 37%;
 }
 
 #mouse2 {
-  width: 11%;
+  width: 18%;
   position: absolute;
   top: 35%;
   left: 15%;
 }
 
 #cat1 {
-  width: 11%;
+  width: 14%;
   position: absolute;
   top: 72%;
   left: 73%;
@@ -102,7 +102,7 @@ img {
 
 #cat2 {
   animation-name: cat2;
-  animation-duration: 2s;
+  animation-duration: 3s;
   animation-timing-function: linear;
   animation-iteration-count: infinite;
 }
@@ -124,7 +124,7 @@ img {
 
 #mouse2 {
   animation-name: mouse2;
-  animation-duration: 2s;
+  animation-duration: 3s;
   animation-timing-function: linear;
   animation-iteration-count: infinite;
 }
@@ -146,7 +146,7 @@ img {
 
 #cat1 {
   animation-name: cat1;
-  animation-duration: 2s;
+  animation-duration: 3s;
   animation-timing-function: ease-out;
   animation-iteration-count: infinite;
 }
