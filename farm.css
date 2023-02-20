@@ -44,15 +44,124 @@ img {
   position: absolute;
   top: 0%;
   left: 0%;
-  background-image: url(jpg/farm.jpg);
+  background-image: url(/images/farm.jpg);
   background-size: cover;
 }
-#game_foregroud {
-  width: 100%;
-  height: 100%;
+
+#mouse1 {
+  width: 13%;
   position: absolute;
-  top: 0%;
-  left: 0%;
-  background-image: ;
-  background-size: cover;
+  top: 18%;
+  left: 37%;
+}
+
+#mouse2 {
+  width: 11%;
+  position: absolute;
+  top: 35%;
+  left: 15%;
+}
+
+#cat1 {
+  width: 11%;
+  position: absolute;
+  top: 72%;
+  left: 73%;
+}
+
+#cat2 {
+  width: 18%;
+  position: absolute;
+  top: 67%;
+  left: 45%;
+}
+
+/* animations */
+
+#mouse1 {
+  animation-name: mouse1;
+  animation-duration: 2s;
+  animation-timing-function: ease-out;
+  animation-iteration-count: infinite;
+}
+
+@keyframes mouse1 {
+  0% {
+    transform: translate(-500%, -150%);
+  }
+  30% {
+    transform: translate(10%, 110%);
+  }
+  70% {
+    transform: translate(200%, 30%);
+  }
+  100% {
+    transform: translate(700%, 400%);
+  }
+}
+
+#cat2 {
+  animation-name: cat2;
+  animation-duration: 2s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+@keyframes cat2 {
+  0% {
+    transform: translate(-300%, 75%);
+  }
+  30% {
+    transform: translate(200%, -210%) scale(0.4);
+  }
+  70% {
+    transform: translate(10%, -180%);
+  }
+  100% {
+    transform: translate(-300%, 200%);
+  }
+}
+
+#mouse2 {
+  animation-name: mouse2;
+  animation-duration: 2s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+@keyframes mouse2 {
+  0% {
+    transform: translate(500%, -150%);
+  }
+  30% {
+    transform: translate(-10%, 110%);
+  }
+  70% {
+    transform: translate(200%, 200%) scale(0.75);
+  }
+  100% {
+    transform: translate(300%, 400%);
+  }
+}
+
+#cat1 {
+  animation-name: cat1;
+  animation-duration: 2s;
+  animation-timing-function: ease-out;
+  animation-iteration-count: infinite;
+}
+
+@keyframes cat1 {
+  0% {
+    transform: translate(-500%, -150%);
+  }
+  30% {
+    transform: translate(10%, 110%) scale(1.25) rotate(360deg);
+  }
+  70% {
+    transform: translate(200%, 30%);
+  }
+  100% {
+    transform: translate(700%, 400%);
+  }
 }
