@@ -12,15 +12,17 @@
       <div id="game">
         <div id="game_background"><img src="images/farm.jpg" /></div>
         <div id="game_elements">
-          <div id="mouse1">
-            <img src="images/mouse.png" />
+          <div id="mouse1_container">
+            <img id="mouse1_sprite" src="images/mouse.png" />
           </div>
-          <div id="mouse2"><img src="images/mouse.png" /></div>
-          <div id="cat1">
-            <img src="images/cat.png" />
+          <div id="mouse2_container">
+            <img id="mouse2_sprite" src="images/mouse.png" />
           </div>
-          <div id="cat2">
-            <img src="images/cat.png" />
+          <div id="cat1_container">
+            <img id="cat1_sprite" src="images/cat.png" />
+          </div>
+          <div id="cat2_container">
+            <img id="cat2_sprite" src="images/cat.png" />
           </div>
         </div>
         <div id="game_foreground"></div>
@@ -28,9 +30,10 @@
           <img id="HP" src="images/HP.png" />
         </div>
       </div>
-      <div id="start"></div>
-      <div id="game_over"></div>
-      <div id="level_complete"></div>
+      <div id="start" class="hidden"></div>
+      <div id="game_over" class="hidden"></div>
+      <div id="level_complete" class="hidden"></div>
     </div>
+    <script src="app.js"></script>
   </body>
 </html>

@@ -8,13 +8,13 @@ img {
   position: relative;
   width: 100%;
   aspect-ratio: 16/9;
+  display: grid;
+  grid-template: 100% / 100%;
 }
 #game {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 0%;
-  left: 0%;
+  grid-area: 1/1;
+  display: grid;
+  grid-template: 100%/100%;
 }
 
 #start {
@@ -24,80 +24,90 @@ img {
   top: 0%;
   left: 0%;
 }
+#game_elements {
+  grid-area: 1/1;
+  overflow: hidden;
+  position: relative;
+}
+#game_background {
+  grid-area: 1/1;
+}
 #game_over {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 0%;
-  left: 0%;
+  grid-area: 1/1;
+  z-index: 999;
+  display: grid;
+  justify-content: center;
+  background-image: linear-gradient(150deg, #c90303 0%, #790909 100%);
+  color: #ffffff;
 }
 #level_complete {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 0%;
-  left: 0%;
-}
-#game_backgroud {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 0%;
-  left: 0%;
-  background-image: url(/images/farm.jpg);
-  background-size: cover;
+  grid-area: 1 /1;
+  z-index: 999;
+  display: grid;
+  justify-content: center;
+  align-content: center;
+  background-image: linear-gradient(150deg, #20c903 0%, #09793b 100%);
+  color: #ffffff;
 }
 
-#mouse1 {
-  width: 22%;
+#mouse1_container {
   position: absolute;
-  top: 18%;
-  left: 37%;
+  top: 15vh;
+  right: -20vh;
+}
+#mouse1_sprite {
+  width: 20vh;
 }
 
-#mouse2 {
-  width: 18%;
+#mouse2_container {
   position: absolute;
-  top: 35%;
-  left: 15%;
+  top: 40vh;
+  left: -20vh;
+  transform: scaleX(-1);
 }
-
-#cat1 {
-  width: 14%;
-  position: absolute;
-  top: 72%;
-  left: 73%;
+#mouse2_sprite {
+  width: 25vh;
+  transform: scaleX(-1);
 }
-
-#cat2 {
-  width: 18%;
+#cat1_container {
   position: absolute;
-  top: 67%;
-  left: 45%;
+  top: 40vh;
+  left: -20vh;
+}
+#cat1_sprite {
+  width: 20vh;
+}
+#cat2_container {
+  position: absolute;
+  top: 20vh;
+  right: -20vh;
+}
+#cat2_sprite {
+  width: 20vh;
+  transform: scaleX(-1);
 }
 
 /* animations */
 
-#mouse1 {
-  animation-name: mouse1;
-  animation-duration: 3s;
+.rightzigzag {
+  animation-name: rightzigzag;
+  animation-duration: 4s;
   animation-timing-function: ease-out;
   animation-iteration-count: infinite;
 }
 
-@keyframes mouse1 {
-  0% {
-    transform: translate(-500%, -150%);
-  }
-  30% {
-    transform: translate(10%, 110%);
-  }
-  70% {
-    transform: translate(200%, 30%);
-  }
-  100% {
-    transform: translate(700%, 400%);
-  }
+.leftzigzag {
+  animation-name: leftzigzag;
+  animation-duration: 4s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+#cat1 {
+  animation-name: cat1;
+  animation-duration: 2.5s;
+  animation-timing-function: ease-out;
+  animation-iteration-count: infinite;
 }
 
 #cat2 {
@@ -107,6 +117,66 @@ img {
   animation-iteration-count: infinite;
 }
 
+.zoom_out {
+  animation-name: zoom_out;
+  animation-duration: 0.5s;
+  animation-timing-function: ease-in;
+}
+
+@keyframes zoom_out {
+  0% {
+    transform: rotate(0deg) scale(1);
+  }
+
+  100% {
+    transform: rotate(-720deg) scale(0);
+  }
+}
+
+@keyframes rightzigzag {
+  0% {
+    transform: translate(-30%, -50%);
+  }
+  30% {
+    transform: translate(-320%, 200%);
+  }
+  70% {
+    transform: translate(-650%, 30%);
+  }
+  100% {
+    transform: translate(-1000%, 400%);
+  }
+}
+
+@keyframes leftzigzag {
+  0% {
+    transform: translate(50%, -60%);
+  }
+  30% {
+    transform: translate(320%, 110%);
+  }
+  70% {
+    transform: translate(620%, 50%) scale(0.75);
+  }
+  100% {
+    transform: translate(1000%, 400%);
+  }
+}
+
+@keyframes cat1 {
+  0% {
+    transform: translate(-150vh, -150%);
+  }
+  30% {
+    transform: translate(-80vh, -110%) scale(1.25) rotate(360deg);
+  }
+  80% {
+    transform: translate(50vh, 30%);
+  }
+  100% {
+    transform: translate(50vh, 30%);
+  }
+}
 @keyframes cat2 {
   0% {
     transform: translate(-300%, 75%);
@@ -121,47 +191,11 @@ img {
     transform: translate(-300%, 200%);
   }
 }
-
-#mouse2 {
-  animation-name: mouse2;
-  animation-duration: 3s;
-  animation-timing-function: linear;
-  animation-iteration-count: infinite;
+.paused {
+  animation-play-state: paused;
 }
-
-@keyframes mouse2 {
-  0% {
-    transform: translate(500%, -150%);
-  }
-  30% {
-    transform: translate(-10%, 110%);
-  }
-  70% {
-    transform: translate(200%, 200%) scale(0.75);
-  }
-  100% {
-    transform: translate(300%, 400%);
-  }
-}
-
-#cat1 {
-  animation-name: cat1;
-  animation-duration: 3s;
-  animation-timing-function: ease-out;
-  animation-iteration-count: infinite;
-}
-
-@keyframes cat1 {
-  0% {
-    transform: translate(-500%, -150%);
-  }
-  30% {
-    transform: translate(10%, 110%) scale(1.25) rotate(360deg);
-  }
-  70% {
-    transform: translate(200%, 30%);
-  }
-  100% {
-    transform: translate(700%, 400%);
-  }
+.hidden,
+#game_over.hidden,
+#level_complete.hidden {
+  display: none;
 }
