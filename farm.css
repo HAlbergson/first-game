@@ -91,14 +91,14 @@ img {
 
 .rightzigzag {
   animation-name: rightzigzag;
-  animation-duration: 4s;
+  animation-duration: 3s;
   animation-timing-function: ease-out;
   animation-iteration-count: infinite;
 }
 
 .leftzigzag {
   animation-name: leftzigzag;
-  animation-duration: 4s;
+  animation-duration: 3s;
   animation-timing-function: linear;
   animation-iteration-count: infinite;
 }
