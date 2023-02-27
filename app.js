@@ -84,92 +84,79 @@ function clickCat2() {
 }
 
 function mouse1Gone() {
-  // fjern event der bringer os herind
+
   document
     .querySelector("#mouse1_container")
     .removeEventListener("animationend", mouse1Gone);
 
-  // fjern forsvind-animation
+
   document.querySelector("#mouse1_sprite").classList.remove("zoom_out");
 
-  // fjern pause
+
   document.querySelector("#mouse1_container").classList.remove("paused");
 
-  // genstart falling animation
+
   document.querySelector("#mouse1_container").classList.remove("rightzigzag");
   document.querySelector("#mouse1_container").offsetWidth;
   document.querySelector("#mouse1_container").classList.add("rightzigzag");
 
-  // gør det muligt at klikke på coin igen
+
   document
     .querySelector("#mouse1_container")
     .addEventListener("click", clickMouse1);
 }
 
 function mouse2Gone() {
-  // fjern event der bringer os herind
   document
     .querySelector("#mouse2_container")
     .removeEventListener("animationend", mouse2Gone);
 
-  // fjern forsvind-animation
   document.querySelector("#mouse2_sprite").classList.remove("zoom_out");
 
-  // fjern pause
   document.querySelector("#mouse2_container").classList.remove("paused");
 
-  // genstart falling animation
   document.querySelector("#mouse2_container").classList.remove("leftzigzag");
   document.querySelector("#mouse2_container").offsetWidth;
   document.querySelector("#mouse2_container").classList.add("leftzigzag");
 
-  // gør det muligt at klikke på coin igen
   document
     .querySelector("#mouse2_container")
     .addEventListener("click", clickMouse2);
 }
 
 function cat1Gone() {
-  // fjern event der bringer os herind
   document
     .querySelector("#cat1_container")
     .removeEventListener("animationend", cat1Gone);
 
-  // fjern forsvind-animation
   document.querySelector("#cat1_sprite").classList.remove("zoom_out");
 
-  // fjern pause
   document.querySelector("#cat1_container").classList.remove("paused");
 
-  // genstart falling animation
   document.querySelector("#cat1_container").classList.remove("leftzigzag");
   document.querySelector("#cat1_container").offsetWidth;
   document.querySelector("#cat1_container").classList.add("leftzigzag");
 
-  // gør det muligt at klikke på coin igen
   document
     .querySelector("#cat1_container")
     .addEventListener("click", clickCat1);
 }
 
 function cat2Gone() {
-  // fjern event der bringer os herind
+
   document
     .querySelector("#cat2_container")
     .removeEventListener("animationend", cat2Gone);
 
-  // fjern forsvind-animation
+
   document.querySelector("#cat2_sprite").classList.remove("zoom_out");
 
-  // fjern pause
   document.querySelector("#cat2_container").classList.remove("paused");
 
-  // genstart falling animation
   document.querySelector("#cat2_container").classList.remove("rightzigzag");
   document.querySelector("#cat2_container").offsetWidth;
   document.querySelector("#cat2_container").classList.add("rightzigzag");
 
-  // gør det muligt at klikke på coin igen
   document
     .querySelector("#cat2_container")
     .addEventListener("click", clickCat2);
