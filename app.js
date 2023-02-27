@@ -2,7 +2,12 @@
 console.log("hallo world");
 window.addEventListener("load", start);
 
+let points = 0;
+let lives = 0;
+
 function start() {
+  points = 0;
+  lives = 3;
   console.log("noob");
   document.querySelector("#mouse1_container").classList.add("rightzigzag");
   document.querySelector("#mouse2_container").classList.add("leftzigzag");
@@ -34,6 +39,7 @@ function clickMouse1() {
   document
     .querySelector("#mouse1_container")
     .addEventListener("animationend", mouse1Gone);
+  incrementPoints();
 }
 
 function clickMouse2() {
@@ -47,6 +53,7 @@ function clickMouse2() {
   document
     .querySelector("#mouse2_container")
     .addEventListener("animationend", mouse2Gone);
+  incrementPoints();
 }
 
 function clickCat1() {
@@ -60,6 +67,7 @@ function clickCat1() {
   document
     .querySelector("#cat1_container")
     .addEventListener("animationend", cat1Gone);
+  decrementLives();
 }
 function clickCat2() {
   console.log("virker det3");
@@ -72,6 +80,7 @@ function clickCat2() {
   document
     .querySelector("#cat2_container")
     .addEventListener("animationend", cat2Gone);
+  decrementLives();
 }
 
 function mouse1Gone() {
@@ -164,4 +173,41 @@ function cat2Gone() {
   document
     .querySelector("#cat2_container")
     .addEventListener("click", clickCat2);
+}
+
+function incrementPoints() {
+  points++;
+  console.log("har nu " + points + " point");
+  displayPoints();
+  if (points >= 20) {
+    levelcomplete();
+  }
+}
+
+function displayPoints() {
+  document.querySelector("#hay_count").textContent = points;
+}
+
+function showDecrementedLives() {
+  document.querySelector("#heart" + lives).classList.remove("active_heart");
+  document.querySelector("#heart" + lives).classList.add("broken_heart");
+}
+function decrementLives() {
+  console.log("mist et liv");
+  showDecrementedLives();
+  lives--;
+  if (lives == 0) {
+    gameOver();
+  }
+}
+
+function gameOver() {
+  console.log("gameOver");
+  document.querySelector("#game_over").classList.remove("hidden");
+  end();
+}
+
+function levelcomplete() {
+  document.querySelector("#level_complete").classList.remove("hidden");
+  end();
 }
