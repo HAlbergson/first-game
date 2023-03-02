@@ -5,6 +5,207 @@ img {
   width: 100%;
 }
 #screen {
+  aspect-ratio: 16/9;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: 100%;
+}
+#game {
+  grid-area: 1 / 1;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 10% / 10%;
+  grid-template-rows: 100%;
+}
+#game_background {
+  grid-area: 1 / 1;
+  background-image: url(images/farm.jpg);
+  background-size: cover;
+  height: 100%;
+  width: 100%;
+}
+#game_elements {
+  grid-area: 1 / 1;
+  position: relative;
+}
+#game_over {
+  grid-area: 1/1;
+  z-index: 999;
+  display: grid;
+  justify-content: center;
+  background-image: linear-gradient(150deg, #c90303 0%, #790909 100%);
+  color: #ffffff;
+}
+#level_complete {
+  grid-area: 1 /1;
+  z-index: 999;
+  display: grid;
+  justify-content: center;
+  align-content: center;
+  background-image: linear-gradient(150deg, #20c903 0%, #09793b 100%);
+  color: #ffffff;
+}
+
+#mouse1_container {
+  position: absolute;
+  left: -25vh;
+  top: 40vh;
+}
+#mouse1_sprite {
+  width: 20vh;
+  transform: scaleX(-1);
+}
+
+#mouse2_container {
+  position: absolute;
+  left: -25vh;
+}
+#mouse2_sprite {
+  width: 25vh;
+  transform: scaleX(-1);
+}
+#cat1_container {
+  position: absolute;
+  left: -20vh;
+}
+#cat1_sprite {
+  width: 20vh;
+}
+#cat2_container {
+  position: absolute;
+  left: -20vh;
+  top: 23vh;
+}
+#cat2_sprite {
+  width: 20vh;
+}
+
+.position1 {
+  top: 15vh;
+  left: 0;
+}
+.position2 {
+  top: 30vh;
+  left: 0;
+}
+.position3 {
+  top: 45vh;
+  left: 0;
+}
+.position4 {
+  top: 60vh;
+  left: 0;
+}
+.position5 {
+  bottom: 75vh;
+  left: 0;
+}
+
+.speed1 {
+  animation-duration: 3s;
+}
+.speed2 {
+  animation-duration: 4s;
+}
+.speed3 {
+  animation-duration: 5s;
+}
+.speed4 {
+  animation-duration: 6s;
+}
+#game_ui {
+  position: absolute;
+  top: 2vw;
+  right: 1vw;
+  color: white;
+
+  font-size: 2em;
+
+  pointer-events: none;
+}
+
+#score_board {
+  display: grid;
+  grid-template-columns: 9fr 25fr;
+  gap: 0.1em;
+}
+
+#hay_count {
+  white-space: nowrap;
+  text-align: right;
+}
+
+#hay_image {
+  width: 5em;
+}
+
+#life_board {
+  margin-block-start: 0.2em;
+  display: grid;
+  grid-template-columns: 1.2em 1.2em 1.2em;
+}
+#life_board img {
+  width: 100%;
+}
+
+.active_heart {
+  filter: drop-shadow(0 0 2px yellow);
+}
+
+.broken_heart {
+  filter: grayscale(75%) blur(0.5px);
+}
+
+/* animations */
+
+.leftzigzag {
+  animation-name: leftzigzag;
+  animation-duration: 3s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+@keyframes leftzigzag {
+  0% {
+    transform: translate(50%, 0);
+  }
+  100% {
+    transform: translate(1000%, 0);
+  }
+}
+
+.zoom_out {
+  animation-name: zoom_out;
+  animation-duration: 0.5s;
+  animation-timing-function: ease-in;
+}
+
+@keyframes zoom_out {
+  0% {
+    transform: rotate(0deg) scale(1);
+  }
+
+  100% {
+    transform: rotate(-720deg) scale(0);
+  }
+}
+
+.paused {
+  animation-play-state: paused;
+}
+.hidden,
+#game_over.hidden,
+#level_complete.hidden {
+  display: none;
+}
+
+/* body {
+  margin: 0;
+}
+img {
+  width: 100%;
+}
+#screen {
   position: relative;
   width: 100%;
   aspect-ratio: 16/9;
@@ -131,7 +332,7 @@ img {
 }
 
 /* animations */
-
+/* 
 .rightzigzag {
   animation-name: rightzigzag;
   animation-duration: 3s;
@@ -241,4 +442,4 @@ img {
 #game_over.hidden,
 #level_complete.hidden {
   display: none;
-}
+} */
