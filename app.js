@@ -1,14 +1,24 @@
 "use strict";
 console.log("hallo world");
-window.addEventListener("load", start);
+window.addEventListener("load", ready);
 
 let points = 0;
 let lives = 0;
 
-function start() {
+function ready() {
+  console.log("JavaScript ready!");
+  document.querySelector("#btn_start").addEventListener("click", startGame);
+  document.querySelector("#btn_restart1").addEventListener("click", startGame);
+  document.querySelector("#btn_restart2").addEventListener("click", showStartScreen);
+}
+
+function startGame() {
   points = 0;
   lives = 3;
-  console.log("noob");
+  resetLives();
+  resetPoints();
+  showGameScreen();
+  startTimer();
   startAnimation();
   addPosition();
   registerClick();
@@ -21,6 +31,11 @@ function startAnimation() {
   document.querySelector("#mouse2_container").classList.add("leftzigzag");
   document.querySelector("#cat1_container").classList.add("leftzigzag");
   document.querySelector("#cat2_container").classList.add("leftzigzag");
+}
+function showGameScreen() {
+  document.querySelector("#start").classList.add("hidden");
+  document.querySelector("#game_over").classList.add("hidden");
+  document.querySelector("#level_complete").classList.add("hidden");
 }
 function addPosition() {
   document.querySelector("#mouse1_container").classList.add("position1");
@@ -41,6 +56,19 @@ function animationRestart() {
   document.querySelector("#cat1_container").addEventListener("animationiteration", catRestart);
   document.querySelector("#cat2_container").addEventListener("animationiteration", catRestart);
 }
+function resetLives() {
+  document.querySelector("#heart1").classList.remove("broken_heart");
+  document.querySelector("#heart2").classList.remove("broken_heart");
+  document.querySelector("#heart3").classList.remove("broken_heart");
+
+  document.querySelector("#heart1").classList.add("active_heart");
+  document.querySelector("#heart2").classList.add("active_heart");
+  document.querySelector("#heart3").classList.add("active_heart");
+}
+function resetPoints() {
+  points = 0;
+  displayPoints();
+}
 
 function addSpeed() {
   document.querySelector("#mouse1_container").classList.add("speed1");
@@ -51,6 +79,7 @@ function addSpeed() {
 
 function clickMouse() {
   let mouse = this;
+  console.log("click mouse")
   mouse.removeEventListener("mousedown", clickMouse);
   mouse.classList.add("paused");
   mouse.querySelector("img").classList.add("zoom_out");
@@ -59,6 +88,7 @@ function clickMouse() {
 }
 
 function mouseGone() {
+  console.log("mouse gone")
   let mouse = this;
   mouse.removeEventListener("animationend", mouseGone);
   mouse.querySelector("img").classList.remove("zoom_out");
@@ -117,13 +147,14 @@ function incrementPoints() {
   points++;
   console.log("har nu " + points + " point");
   displayPoints();
-  if (points >= 20) {
-    levelcomplete();
-  }
 }
 
 function displayPoints() {
   document.querySelector("#hay_count").textContent = points;
+
+  if (points >= 2) {
+    levelComplete();
+  }
 }
 
 function showDecrementedLives() {
@@ -138,6 +169,31 @@ function decrementLives() {
     gameOver();
   }
 }
+function startTimer() {
+  document.querySelector("#time_sprite").classList.add("shrink");
+
+  document.querySelector("#time_sprite").addEventListener("animationend", timeIsUp);
+}
+function timeIsUp() {
+  if (points >= 15) {
+    levelComplete();
+  } else {
+    gameOver();
+  }
+}
+function end() {
+  document.querySelector("#mouse1_container").classList.remove("leftzigzag");
+  document.querySelector("#mouse2_container").classList.remove("leftzigzag");
+  document.querySelector("#cat1_container").classList.remove("leftzigzag");
+  document.querySelector("#cat2_container").classList.remove("leftzigzag");
+
+  document.querySelector("#mouse1_container").removeEventListener("mousedown", mouseGone);
+  document.querySelector("#mouse2_container").removeEventListener("mousedown", mouseGone);
+  document.querySelector("#cat1_container").removeEventListener("mousedown", catGone);
+  document.querySelector("#cat2_container").removeEventListener("mousedown", catGone);
+
+  document.querySelector("#time_sprite").classList.remove("shrink");
+}
 
 function gameOver() {
   console.log("gameOver");
@@ -145,7 +201,13 @@ function gameOver() {
   end();
 }
 
-function levelcomplete() {
+function levelComplete() {
   document.querySelector("#level_complete").classList.remove("hidden");
   end();
+}
+
+function showStartScreen() {
+  document.querySelector("#start").classList.remove("hidden");
+  document.querySelector("#game_over").classList.add("hidden");
+  document.querySelector("#level_complete").classList.add("hidden");
 }

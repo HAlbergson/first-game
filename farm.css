@@ -21,6 +21,7 @@ p {
 }
 h2 {
   font-size: 4em;
+  text-align: center;
 }
 #screen {
   aspect-ratio: 16/9;
@@ -118,7 +119,6 @@ h2 {
 }
 #game_ui {
   grid-area: 1 / 1;
-  position: relative;
   font-size: 4em;
   font-family: sans-serif;
   color: black;
@@ -272,7 +272,7 @@ h2 {
 }
 .shrink {
   animation-name: shrink;
-  animation-duration: 5s;
+  animation-duration: 25s;
   animation-iteration-count: 1;
   animation-timing-function: linear;
   animation-fill-mode: forwards;
