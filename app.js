@@ -4,6 +4,7 @@ window.addEventListener("load", ready);
 
 let points = 0;
 let lives = 0;
+let isGameRunning = false;
 
 function ready() {
   console.log("JavaScript ready!");
@@ -13,6 +14,7 @@ function ready() {
 }
 
 function startGame() {
+  isGameRunning = true;
   points = 0;
   lives = 3;
   resetLives();
@@ -24,6 +26,13 @@ function startGame() {
   registerClick();
   animationRestart();
   addSpeed();
+  startMusic();
+  document.querySelector("#game").classList.add("zoom_in");
+}
+
+function startMusic() {
+  document.querySelector("#sound_music").play();
+  document.querySelector("#sound_music").loop = true;
 }
 
 function startAnimation() {
@@ -79,22 +88,27 @@ function addSpeed() {
 
 function clickMouse() {
   let mouse = this;
-  console.log("click mouse")
+  console.log("click mouse");
   mouse.removeEventListener("mousedown", clickMouse);
   mouse.classList.add("paused");
   mouse.querySelector("img").classList.add("zoom_out");
   mouse.addEventListener("animationend", mouseGone);
+  document.querySelector("#sound_clickMouse").play();
+  document.querySelector("#sound_clickMouse").volume = 0.3;
+  document.querySelector("#sound_clickMouse").currentTime = 0;
   incrementPoints();
 }
 
 function mouseGone() {
-  console.log("mouse gone")
+  console.log("mouse gone");
   let mouse = this;
   mouse.removeEventListener("animationend", mouseGone);
   mouse.querySelector("img").classList.remove("zoom_out");
   mouse.classList.remove("paused");
-  mouseRestart.call(this);
-  mouse.addEventListener("mousedown", clickMouse);
+  if (isGameRunning) {
+    mouseRestart.call(this);
+    mouse.addEventListener("mousedown", clickMouse);
+  }
 }
 
 function mouseRestart() {
@@ -113,11 +127,15 @@ function mouseRestart() {
 
 function clickCat() {
   let cat = this;
-  cat.removeEventListener("click", clickCat);
+  cat.removeEventListener("mousedown", clickCat);
   cat.classList.add("paused");
   cat.querySelector("img").classList.add("zoom_out");
   cat.addEventListener("animationend", catGone);
+  document.querySelector("#sound_clickCat").play();
+  document.querySelector("#sound_clickCat").volume = 0.8;
+  document.querySelector("#sound_clickCat").currentTime = 0;
   decrementLives();
+  decrementPoints();
 }
 
 function catGone() {
@@ -125,8 +143,11 @@ function catGone() {
   cat.removeEventListener("animationend", catGone);
   cat.querySelector("img").classList.remove("zoom_out");
   cat.classList.remove("paused");
-  catRestart.call(this);
-  cat.addEventListener("mousedown", clickCat);
+
+  if (isGameRunning) {
+    catRestart.call(this);
+    cat.addEventListener("mousedown", clickCat);
+  }
 }
 
 function catRestart() {
@@ -149,6 +170,11 @@ function incrementPoints() {
   displayPoints();
 }
 
+function decrementPoints() {
+  points--;
+  console.log("har nu " + points + " point");
+  displayPoints();
+}
 function displayPoints() {
   document.querySelector("#hay_count").textContent = points;
 
@@ -182,6 +208,8 @@ function timeIsUp() {
   }
 }
 function end() {
+  isGameRunning = false;
+
   document.querySelector("#mouse1_container").classList.remove("leftzigzag");
   document.querySelector("#mouse2_container").classList.remove("leftzigzag");
   document.querySelector("#cat1_container").classList.remove("leftzigzag");
@@ -193,16 +221,22 @@ function end() {
   document.querySelector("#cat2_container").removeEventListener("mousedown", catGone);
 
   document.querySelector("#time_sprite").classList.remove("shrink");
+  document.querySelector("#game").classList.remove("zoom_in");
 }
 
 function gameOver() {
   console.log("gameOver");
+  document.querySelector("#sound_gameOver").play();
   document.querySelector("#game_over").classList.remove("hidden");
+  document.querySelector("#game_over").classList.add("zoom_in");
+
   end();
 }
 
 function levelComplete() {
   document.querySelector("#level_complete").classList.remove("hidden");
+  document.querySelector("#sound_levelComplete").play();
+  document.querySelector("#level_complete").classList.add("zoom_in");
   end();
 }
 
@@ -210,4 +244,5 @@ function showStartScreen() {
   document.querySelector("#start").classList.remove("hidden");
   document.querySelector("#game_over").classList.add("hidden");
   document.querySelector("#level_complete").classList.add("hidden");
+  document.querySelector("#start").classList.add("zoom_in");
 }

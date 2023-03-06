@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>first game</title>
     <link rel="stylesheet" href="farm.css" />
+    <link rel="stylesheet" href="animation.css" />
   </head>
   <body>
     <div id="screen">
@@ -43,20 +44,24 @@
         </div>
       </div>
       <div id="start" class="">
-        <h2>catch the mice</h2>
+        <h2>mice catch</h2>
         <p>catch at least 15 mice before the time runs out to win the game. if u catch the cats instead you will lose 1 life and 2 points</p>
         <button id="btn_start" class="pulse">Start game</button>
       </div>
       <div id="game_over" class="hidden">
         <h2>Game over</h2>
-        <button id="btn_restart1" class="pulse">Return to start</button>
+        <button id="btn_restart1" class="pulse">Restart</button>
       </div>
       <div id="level_complete" class="hidden">
-        <h2>Time's up</h2>
-        <p id="levelCompleteMessage"></p>
+        <h2>Level Complete!!😍👑🥇</h2>
         <button id="btn_restart2" class="pulse">Return to start</button>
       </div>
     </div>
+    <audio id="sound_clickMouse" src="sounds/coin.mp3"></audio>
+    <audio id="sound_clickCat" src="sounds/bomb.mp3"></audio>
+    <audio id="sound_music" src="sounds/dreams.mp3"></audio>
+    <audio id="sound_levelComplete" src="sounds/tada.mp3"></audio>
+    <audio id="sound_gameOver" src="sounds/gameOver.mp3"></audio>
     <script src="app.js"></script>
   </body>
 </html>
