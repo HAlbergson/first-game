@@ -4,6 +4,24 @@ body {
 img {
   width: 100%;
 }
+button {
+  padding: 0.5em 1em;
+  font-size: 2em;
+  margin: auto;
+  background-color: orange;
+  color: #fff4bf;
+  border: 10px solid #ffc72e;
+  cursor: pointer;
+  border-radius: 10px;
+}
+p {
+  text-align: center;
+  font-size: 1.5em;
+  margin: 1em 0 1.5em;
+}
+h2 {
+  font-size: 4em;
+}
 #screen {
   aspect-ratio: 16/9;
   width: 100%;
@@ -99,20 +117,21 @@ img {
   animation-duration: 2.5s;
 }
 #game_ui {
-  position: absolute;
-  top: 2vw;
-  right: 1vw;
-  color: white;
-
-  font-size: 2em;
-
-  pointer-events: none;
+  grid-area: 1 / 1;
+  position: relative;
+  font-size: 4em;
+  font-family: sans-serif;
+  color: black;
 }
 
 #score_board {
+  width: 12%;
+  position: absolute;
+  top: 0%;
+  right: 0%;
   display: grid;
-  grid-template-columns: 9fr 25fr;
-  gap: 0.1em;
+  grid-template-columns: 2fr 1.5fr;
+  font-size: 1em;
 }
 
 #hay_count {
@@ -127,7 +146,7 @@ img {
 #life_board {
   margin-block-start: 0.2em;
   display: grid;
-  grid-template-columns: 1.2em 1.2em 1.2em;
+  grid-template-columns: 1em 1em 1em;
 }
 #life_board img {
   width: 100%;
@@ -176,21 +195,7 @@ img {
 .paused {
   animation-play-state: paused;
 }
-.hidden,
-#game_over.hidden,
-#level_complete.hidden {
-  display: none;
-}
-
-#game_over {
-  grid-area: 1/1;
-  z-index: 999;
-  display: grid;
-  justify-content: center;
-  background-image: linear-gradient(150deg, #c90303 0%, #790909 100%);
-  color: #ffffff;
-}
-#level_complete {
+#start {
   grid-area: 1 /1;
   z-index: 999;
   display: grid;
@@ -199,45 +204,43 @@ img {
   background-image: linear-gradient(150deg, #20c903 0%, #09793b 100%);
   color: #ffffff;
 }
-/* body {
-  margin: 0;
-}
-img {
-  width: 100%;
-}
-#screen {
-  position: relative;
-  width: 100%;
-  aspect-ratio: 16/9;
-  display: grid;
-  grid-template: 100% / 100%;
-}
-#game {
-  grid-area: 1/1;
-  display: grid;
-  grid-template: 100%/100%;
+.hidden,
+#game_over.hidden,
+#level_complete.hidden,
+#game.hidden,
+#start.hidden {
+  display: none;
 }
 
-#start {
+#time_board {
+  top: 0%;
+}
+
+#time_container {
+  position: absolute;
+  width: 30%;
+  height: 2.5%;
+  aspect-ratio: 30/6;
+
+  background-color: rgba(208, 204, 204, 0.383);
+  top: 1%;
+  left: 35%;
+}
+
+#time_sprite {
+  position: absolute;
   width: 100%;
   height: 100%;
-  position: absolute;
-  top: 0%;
-  left: 0%;
+  background-color: limegreen;
+  transform-origin: right;
 }
-#game_elements {
-  grid-area: 1/1;
-  overflow: hidden;
-  position: relative;
-}
-#game_background {
-  grid-area: 1/1;
-}
+
 #game_over {
-  grid-area: 1/1;
+  grid-area: 1 /1;
   z-index: 999;
   display: grid;
   justify-content: center;
+  align-content: center;
   background-image: linear-gradient(150deg, #c90303 0%, #790909 100%);
   color: #ffffff;
 }
@@ -250,196 +253,41 @@ img {
   background-image: linear-gradient(150deg, #20c903 0%, #09793b 100%);
   color: #ffffff;
 }
+@keyframes pulse {
+  0% {
+    transform: scale(0.8);
+  }
 
-#mouse1_container {
-  position: absolute;
-  top: 15vh;
-  right: -20vh;
-}
-#mouse1_sprite {
-  width: 20vh;
-}
-
-#mouse2_container {
-  position: absolute;
-  top: 40vh;
-  left: -20vh;
-  transform: scaleX(-1);
-}
-#mouse2_sprite {
-  width: 25vh;
-  transform: scaleX(-1);
-}
-#cat1_container {
-  position: absolute;
-  top: 40vh;
-  left: -20vh;
-}
-#cat1_sprite {
-  width: 20vh;
-}
-#cat2_container {
-  position: absolute;
-  top: 20vh;
-  right: -20vh;
-}
-#cat2_sprite {
-  width: 20vh;
-  transform: scaleX(-1);
+  100% {
+    transform: scale(1);
+  }
 }
 
-#game_ui {
-  position: absolute;
-  top: 2vw;
-  right: 1vw;
-  color: white;
-
-  font-size: 2em;
-
-  pointer-events: none;
-}
-
-#score_board {
-  display: grid;
-  grid-template-columns: 9fr 25fr;
-  gap: 0.1em;
-}
-
-#hay_count {
-  white-space: nowrap;
-  text-align: right;
-}
-
-#hay_image {
-  width: 5em;
-}
-
-#life_board {
-  margin-block-start: 0.2em;
-  display: grid;
-  grid-template-columns: 1.2em 1.2em 1.2em;
-}
-#life_board img {
-  width: 100%;
-}
-
-.active_heart {
-  filter: drop-shadow(0 0 2px yellow);
-}
-
-.broken_heart {
-  filter: grayscale(75%) blur(0.5px);
-}
-
-/* animations */
-/* 
-.rightzigzag {
-  animation-name: rightzigzag;
-  animation-duration: 3s;
-  animation-timing-function: ease-out;
+.pulse {
+  animation-name: pulse;
+  animation-duration: 1s;
   animation-iteration-count: infinite;
-}
-
-.leftzigzag {
-  animation-name: leftzigzag;
-  animation-duration: 3s;
   animation-timing-function: linear;
-  animation-iteration-count: infinite;
+  animation-direction: alternate;
 }
-
-#cat1 {
-  animation-name: cat1;
-  animation-duration: 2.5s;
-  animation-timing-function: ease-out;
-  animation-iteration-count: infinite;
-}
-
-#cat2 {
-  animation-name: cat2;
-  animation-duration: 3s;
+.shrink {
+  animation-name: shrink;
+  animation-duration: 5s;
+  animation-iteration-count: 1;
   animation-timing-function: linear;
-  animation-iteration-count: infinite;
+  animation-fill-mode: forwards;
 }
 
-.zoom_out {
-  animation-name: zoom_out;
-  animation-duration: 0.5s;
-  animation-timing-function: ease-in;
-}
-
-@keyframes zoom_out {
+@keyframes shrink {
   0% {
-    transform: rotate(0deg) scale(1);
+    scale: 1 1;
+    background-color: limegreen;
   }
-
-  100% {
-    transform: rotate(-720deg) scale(0);
-  }
-}
-
-@keyframes rightzigzag {
-  0% {
-    transform: translate(-30%, -50%);
-  }
-  30% {
-    transform: translate(-320%, 200%);
-  }
-  70% {
-    transform: translate(-650%, 30%);
+  50% {
+    background-color: rgb(255, 230, 0);
   }
   100% {
-    transform: translate(-1000%, 400%);
+    scale: 0 1;
+    background-color: red;
   }
 }
-
-@keyframes leftzigzag {
-  0% {
-    transform: translate(50%, -60%);
-  }
-  30% {
-    transform: translate(320%, 110%);
-  }
-  70% {
-    transform: translate(620%, 50%) scale(0.75);
-  }
-  100% {
-    transform: translate(1000%, 400%);
-  }
-}
-
-@keyframes cat1 {
-  0% {
-    transform: translate(-150vh, -150%);
-  }
-  30% {
-    transform: translate(-80vh, -110%) scale(1.25) rotate(360deg);
-  }
-  80% {
-    transform: translate(50vh, 30%);
-  }
-  100% {
-    transform: translate(50vh, 30%);
-  }
-}
-@keyframes cat2 {
-  0% {
-    transform: translate(-300%, 75%);
-  }
-  30% {
-    transform: translate(200%, -210%) scale(0.4);
-  }
-  70% {
-    transform: translate(10%, -180%);
-  }
-  100% {
-    transform: translate(-300%, 200%);
-  }
-}
-.paused {
-  animation-play-state: paused;
-}
-.hidden,
-#game_over.hidden,
-#level_complete.hidden {
-  display: none;
-} */
