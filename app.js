@@ -178,7 +178,7 @@ function decrementPoints() {
 function displayPoints() {
   document.querySelector("#hay_count").textContent = points;
 
-  if (points >= 2) {
+  if (points >= 10) {
     levelComplete();
   }
 }
@@ -222,6 +222,7 @@ function end() {
 
   document.querySelector("#time_sprite").classList.remove("shrink");
   document.querySelector("#game").classList.remove("zoom_in");
+  document.querySelector("#sound_music").pause();
 }
 
 function gameOver() {
