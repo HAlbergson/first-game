@@ -31,6 +31,7 @@ function startGame() {
 function startMusic() {
   document.querySelector("#sound_music").play();
   document.querySelector("#sound_music").loop = true;
+  document.querySelector("#sound_music").volume = 0.2;
 }
 
 function startAnimation() {
