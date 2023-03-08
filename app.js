@@ -22,10 +22,8 @@ function startGame() {
   showGameScreen();
   startTimer();
   startAnimation();
-  addPosition();
   registerClick();
   animationRestart();
-  addSpeed();
   startMusic();
   document.querySelector("#game").classList.add("zoom_in");
 }
@@ -40,6 +38,9 @@ function startAnimation() {
   document.querySelector("#mouse2_container").classList.add("leftzigzag");
   document.querySelector("#cat1_container").classList.add("leftzigzag");
   document.querySelector("#cat2_container").classList.add("leftzigzag");
+
+  addSpeed();
+  addPosition();
 }
 function showGameScreen() {
   document.querySelector("#start").classList.add("hidden");

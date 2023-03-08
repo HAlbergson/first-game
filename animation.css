@@ -68,7 +68,7 @@
 
 .shrink {
   animation-name: shrink;
-  animation-duration: 15s;
+  animation-duration: 12s;
   animation-iteration-count: 1;
   animation-timing-function: linear;
   animation-fill-mode: forwards;
