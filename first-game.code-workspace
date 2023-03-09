@@ -1,0 +1,12 @@
+{
+  "folders": [
+	{
+		"name": "first-game",
+		"path": "."
+	}
+],
+  "settings": {
+    "liveServer.settings.port": 5503,
+    "liveServer.settings.multiRootWorkspaceName": "first-game"
+  }
+}
